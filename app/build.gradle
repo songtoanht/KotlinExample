@@ -1,0 +1,109 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+
+
+repositories {
+    mavenCentral()
+}
+
+android {
+    compileSdkVersion 24
+    buildToolsVersion "24.0.1"
+
+    defaultConfig {
+        applicationId "com.toanns.kotlinexample"
+        minSdkVersion 15
+        targetSdkVersion 24
+        versionCode 1
+        versionName "1.0"
+    }
+
+    signingConfigs {
+        release {
+            if (!System.getenv("CI")) {
+                def signFile = file("../local.properties")
+                def signingProps = new Properties()
+                signingProps.load(new FileInputStream(signFile))
+
+                storeFile file("../releasekey.jks")
+                storePassword signingProps['storePassword']
+                keyAlias signingProps['keyAlias']
+                keyPassword signingProps['keyPassword']
+            }
+        }
+
+        debug {
+            storeFile file('../debugkey.jks')
+        }
+    }
+
+    productFlavors {
+        student{
+            applicationId "com.toanns.student"
+            versionCode 1
+            versionName "1.0.0"
+        }
+
+        teacher{
+            applicationId "com.toanns.teacher"
+            versionCode 1
+            versionName "1.0.0"
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+            applicationVariants.all {
+                variant -> appendVersionNameVersionCode(variant)
+            }
+        }
+
+        debug {
+            applicationIdSuffix '.debug'
+            signingConfig signingConfigs.debug
+            applicationVariants.all {
+                variant -> appendVersionNameVersionCode(variant)
+            }
+        }
+    }
+
+    sourceSets {
+//        main.java.srcDirs += 'src/main/kotlin'
+        teacher{
+            res.srcDirs = ['src/teacher/res']
+        }
+        student{
+            res.srcDirs = ['src/student/res']
+        }
+    }
+}
+
+task clean() {
+    delete '**/*-unaligned.apk'
+}
+
+@SuppressWarnings("GroovyAssignabilityCheck")
+def appendVersionNameVersionCode(variant) {
+    variant.outputs.each { output ->
+        def applicationId = variant.mergedFlavor.applicationId + (variant.buildType.applicationIdSuffix == null ? "" : variant.buildType.applicationIdSuffix)
+        if (variant.buildType.name == android.buildTypes.debug.name || variant.buildType.name == android.buildTypes.release.name) {
+            if (output.zipAlign) {
+                def file = output.outputFile
+                output.outputFile = new File(file.parentFile, "${variant.buildType.name}_${applicationId}_v${variant.versionName}-${variant.versionCode}.apk")
+            }
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    testCompile 'junit:junit:4.12'
+    compile 'com.android.support:appcompat-v7:23.2.1'
+    compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    compile 'com.android.support:recyclerview-v7:23.2.1'
+    compile 'com.squareup.retrofit2:retrofit:2.0.0'
+}
