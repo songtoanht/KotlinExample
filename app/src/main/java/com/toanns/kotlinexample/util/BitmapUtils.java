@@ -6,5 +6,9 @@ package com.toanns.kotlinexample.util;
  * @author ToanNS
  */
 
-public class BitmapUtils {
+public final class BitmapUtils {
+
+    private BitmapUtils (){
+
+    }
 }
