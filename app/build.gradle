@@ -79,6 +79,12 @@ android {
             res.srcDirs = ['src/student/res']
         }
     }
+
+    lintOptions {
+        abortOnError false
+        lintConfig file('lint.xml')
+        xmlOutput file("${buildDir}/outputs/lint-results.xml")
+    }
 }
 
 @SuppressWarnings("GroovyAssignabilityCheck")
