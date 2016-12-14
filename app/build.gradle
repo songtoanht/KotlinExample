@@ -7,13 +7,13 @@ repositories {
 }
 
 android {
-    compileSdkVersion 24
-    buildToolsVersion "24.0.0"
+    compileSdkVersion 23
+    buildToolsVersion "23.0.1"
 
     defaultConfig {
         applicationId "com.toanns.kotlinexample"
         minSdkVersion 15
-        targetSdkVersion 24
+        targetSdkVersion 23
         versionCode 1
         versionName "1.0"
     }
@@ -94,13 +94,13 @@ def appendVersionNameVersionCode(variant) {
     }
 }
 
+apply from: "https://raw.githubusercontent.com/monstar-lab/gradle-android-ci-check/for-kotlin-settings/ci_kotlin.gradle"
+
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     testCompile 'junit:junit:4.12'
-    compile 'com.android.support:appcompat-v7:24.0.0'
+    compile 'com.android.support:appcompat-v7:23.1.1'
     compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-    compile 'com.android.support:recyclerview-v7:24.0.0'
+    compile 'com.android.support:recyclerview-v7:23.1.1'
     compile 'com.squareup.retrofit2:retrofit:2.0.0'
-
-    apply from: "https://raw.githubusercontent.com/monstar-lab/gradle-android-ci-check/for-kotlin-settings/ci_kotlin.gradle"
 }
