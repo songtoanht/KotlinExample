@@ -25,7 +25,7 @@ android {
                 def signingProps = new Properties()
                 signingProps.load(new FileInputStream(signFile))
 
-                storeFile file("../releasekey.jks")
+                storeFile file("../keystore/releasekey.jks")
                 storePassword signingProps['storePassword']
                 keyAlias signingProps['keyAlias']
                 keyPassword signingProps['keyPassword']
@@ -33,7 +33,7 @@ android {
         }
 
         debug {
-            storeFile file('../debugkey.jks')
+            storeFile file('../keystore/debugkey.jks')
         }
     }
 
