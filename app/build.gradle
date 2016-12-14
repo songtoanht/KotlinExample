@@ -71,7 +71,7 @@ android {
     }
 
     sourceSets {
-//        main.java.srcDirs += 'src/main/kotlin'
+        main.java.srcDirs += 'src/main/kotlin'
         teacher{
             res.srcDirs = ['src/teacher/res']
         }
