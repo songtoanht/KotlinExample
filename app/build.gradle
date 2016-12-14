@@ -1,6 +1,7 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply from: "https://raw.githubusercontent.com/monstar-lab/gradle-android-ci-check/for-kotlin-settings/ci_kotlin.gradle"
 
 
 repositories {
