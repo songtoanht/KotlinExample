@@ -3,9 +3,9 @@ package com.toanns.kotlinexample.ui.welcome
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import android.widget.Button
 import com.toanns.kotlinexample.R
-import com.toanns.kotlinexample.ui.shop.ShopActivity
+import com.toanns.kotlinexample.ui.home.HomeActivity
+import kotlinx.android.synthetic.main.activity_login.*
 
 /**
  * @author ToanNS
@@ -16,10 +16,8 @@ class LoginActivity :AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
-        val login = findViewById(R.id.btnLogin) as Button
-
-        login.setOnClickListener({ v ->
-            val intent = Intent(this, ShopActivity::class.java)
+        btnLogin.setOnClickListener({ v ->
+            val intent = Intent(this, HomeActivity::class.java)
                     startActivity(intent)
         })
 

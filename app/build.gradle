@@ -38,13 +38,14 @@ android {
     }
 
     productFlavors {
-        student{
+        student {
+//            manifestPlaceholders = [app_name1:"student"]
             applicationId "com.toanns.student"
             versionCode 1
             versionName "1.0.0"
         }
 
-        teacher{
+        teacher {
             applicationId "com.toanns.teacher"
             versionCode 1
             versionName "1.0.0"
@@ -70,12 +71,38 @@ android {
         }
     }
 
+    applicationVariants.all {
+        variant ->
+            switch (variant.getName()) {
+                case "studentDebug":
+                    def APP_NAME = "[D]Student";
+                    variant.resValue("string", "app_name", "${APP_NAME}");
+                    variant.buildConfigField("int", "KEY_FB", '123');
+                    break;
+                case "teacherDebug":
+                    def APP_NAME = "[D]Techer";
+                    variant.resValue("string", "app_name", "${APP_NAME}");
+                    variant.buildConfigField("int", "KEY_FB", '456');
+                    break;
+                case "studentRelease":
+                    def APP_NAME = "Student";
+                    variant.resValue("string", "app_name", "${APP_NAME}");
+                    variant.buildConfigField("int", "KEY_FB", '123');
+                    break;
+                case "teacherRelease":
+                    def APP_NAME = "Teacher";
+                    variant.resValue("string", "app_name", "${APP_NAME}");
+                    variant.buildConfigField("int", "KEY_FB", '456');
+                    break;
+            }
+    }
+
     sourceSets {
         main.java.srcDirs += 'src/main/kotlin'
-        teacher{
+        teacher {
             res.srcDirs = ['src/teacher/res']
         }
-        student{
+        student {
             res.srcDirs = ['src/student/res']
         }
     }
