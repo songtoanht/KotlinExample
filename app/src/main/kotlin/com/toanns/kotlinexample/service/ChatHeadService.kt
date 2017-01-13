@@ -16,9 +16,6 @@ import android.view.WindowManager.LayoutParams.TYPE_PHONE
 import android.widget.ImageView
 import com.toanns.kotlinexample.R
 
-
-
-
 /**
  * Copyright © 2016 AsianTech inc.
  * Created by toanns on 22/12/2016.
@@ -93,8 +90,8 @@ class ChatHeadService : Service() {
                         return true
                     }
                     MotionEvent.ACTION_UP -> {
-                        Log.d("ttt", "up")
                         chatHead!!.visibility = View.GONE
+                        v.performClick()
                         return true
                     }
                     MotionEvent.ACTION_MOVE -> {

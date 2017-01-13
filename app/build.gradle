@@ -132,8 +132,8 @@ apply from: "https://raw.githubusercontent.com/monstar-lab/gradle-android-ci-che
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     testCompile 'junit:junit:4.12'
-    compile 'com.android.support:appcompat-v7:25.0.1'
+    compile 'com.android.support:appcompat-v7:25.1.0'
     compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-    compile 'com.android.support:recyclerview-v7:25.0.1'
+    compile 'com.android.support:recyclerview-v7:25.1.0'
     compile 'com.squareup.retrofit2:retrofit:2.0.0'
 }
