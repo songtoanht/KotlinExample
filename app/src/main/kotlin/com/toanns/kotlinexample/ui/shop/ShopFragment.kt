@@ -1,22 +1,22 @@
 package com.toanns.kotlinexample.ui.shop
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import com.toanns.kotlinexample.R
 import com.toanns.kotlinexample.common.inflate
+import com.toanns.kotlinexample.service.ChatHeadService
+import kotlinx.android.synthetic.main.fragment_shop.*
 
 /**
- * Todo
- *
- * @author ToanNS
+ * Copyright © 2016 AsianTech inc.
+ * Created by toanns on 18/12/2016.
  */
 class ShopFragment : Fragment() {
-
-    private var mTvName: TextView? = null
 
     companion object {
         fun newInstance() : ShopFragment {
@@ -31,6 +31,10 @@ class ShopFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+        btnOK.setOnClickListener {
+//            startActivity(Intent(activity, HomeActivity::class.java))
+            Log.d("ttt", "hay hay")
+            activity.startService(Intent(activity, ChatHeadService::class.java))
+        }
     }
-
 }

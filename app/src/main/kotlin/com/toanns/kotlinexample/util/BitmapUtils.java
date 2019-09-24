@@ -11,4 +11,8 @@ public final class BitmapUtils {
     private BitmapUtils (){
 
     }
+
+    public static void add () {
+
+    }
 }

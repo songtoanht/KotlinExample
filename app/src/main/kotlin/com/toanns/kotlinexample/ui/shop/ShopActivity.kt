@@ -4,22 +4,21 @@ import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentStatePagerAdapter
-import android.support.v4.view.ViewPager
 import android.support.v7.app.AppCompatActivity
 import com.toanns.kotlinexample.R
+import kotlinx.android.synthetic.main.activity_shop.*
 
+/**
+ * Copyright © 2016 AsianTech inc.
+ * Created by toanns on 18/12/2016.
+ */
 class ShopActivity : AppCompatActivity() {
-
-    private var mViewPage: ViewPager? = null;
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_shop)
 
-        mViewPage = findViewById(R.id.viewPager) as ViewPager?
-        val adapter = ViewPagerAdapter(supportFragmentManager)
-        mViewPage?.setAdapter(adapter)
+        viewPager.adapter=ViewPagerAdapter(supportFragmentManager)
     }
 
 

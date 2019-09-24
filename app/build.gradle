@@ -2,19 +2,18 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
-
 repositories {
     mavenCentral()
 }
 
 android {
-    compileSdkVersion 24
-    buildToolsVersion "24.0.1"
+    compileSdkVersion 25
+    buildToolsVersion "25.0.1"
 
     defaultConfig {
         applicationId "com.toanns.kotlinexample"
         minSdkVersion 15
-        targetSdkVersion 24
+        targetSdkVersion 25
         versionCode 1
         versionName "1.0"
     }
@@ -26,7 +25,7 @@ android {
                 def signingProps = new Properties()
                 signingProps.load(new FileInputStream(signFile))
 
-                storeFile file("../releasekey.jks")
+                storeFile file("../keystore/releasekey.jks")
                 storePassword signingProps['storePassword']
                 keyAlias signingProps['keyAlias']
                 keyPassword signingProps['keyPassword']
@@ -34,18 +33,19 @@ android {
         }
 
         debug {
-            storeFile file('../debugkey.jks')
+            storeFile file('../keystore/debugkey.jks')
         }
     }
 
     productFlavors {
-        student{
+        student {
+//            manifestPlaceholders = [app_name1:"student"]
             applicationId "com.toanns.student"
             versionCode 1
             versionName "1.0.0"
         }
 
-        teacher{
+        teacher {
             applicationId "com.toanns.teacher"
             versionCode 1
             versionName "1.0.0"
@@ -71,19 +71,47 @@ android {
         }
     }
 
+    applicationVariants.all {
+        variant ->
+            switch (variant.getName()) {
+                case "studentDebug":
+                    def APP_NAME = "[D]Student";
+                    variant.resValue("string", "app_name", "${APP_NAME}");
+                    variant.buildConfigField("int", "KEY_FB", '123');
+                    break;
+                case "teacherDebug":
+                    def APP_NAME = "[D]Techer";
+                    variant.resValue("string", "app_name", "${APP_NAME}");
+                    variant.buildConfigField("int", "KEY_FB", '456');
+                    break;
+                case "studentRelease":
+                    def APP_NAME = "Student";
+                    variant.resValue("string", "app_name", "${APP_NAME}");
+                    variant.buildConfigField("int", "KEY_FB", '123');
+                    break;
+                case "teacherRelease":
+                    def APP_NAME = "Teacher";
+                    variant.resValue("string", "app_name", "${APP_NAME}");
+                    variant.buildConfigField("int", "KEY_FB", '456');
+                    break;
+            }
+    }
+
     sourceSets {
-//        main.java.srcDirs += 'src/main/kotlin'
-        teacher{
+        main.java.srcDirs += 'src/main/kotlin'
+        teacher {
             res.srcDirs = ['src/teacher/res']
         }
-        student{
+        student {
             res.srcDirs = ['src/student/res']
         }
     }
-}
 
-task clean() {
-    delete '**/*-unaligned.apk'
+    lintOptions {
+        abortOnError false
+        lintConfig file('lint.xml')
+        xmlOutput file("${buildDir}/outputs/lint-results.xml")
+    }
 }
 
 @SuppressWarnings("GroovyAssignabilityCheck")
@@ -99,11 +127,13 @@ def appendVersionNameVersionCode(variant) {
     }
 }
 
+apply from: "https://raw.githubusercontent.com/monstar-lab/gradle-android-ci-check/for-kotlin-settings/ci_kotlin.gradle"
+
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     testCompile 'junit:junit:4.12'
-    compile 'com.android.support:appcompat-v7:23.2.1'
+    compile 'com.android.support:appcompat-v7:25.1.0'
     compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-    compile 'com.android.support:recyclerview-v7:23.2.1'
+    compile 'com.android.support:recyclerview-v7:25.1.0'
     compile 'com.squareup.retrofit2:retrofit:2.0.0'
 }
