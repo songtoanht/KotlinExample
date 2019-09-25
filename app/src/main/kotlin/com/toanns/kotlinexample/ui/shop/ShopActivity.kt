@@ -1,12 +1,12 @@
 package com.toanns.kotlinexample.ui.shop
 
 import android.os.Bundle
-import android.support.v4.app.Fragment
-import android.support.v4.app.FragmentManager
-import android.support.v4.app.FragmentStatePagerAdapter
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentStatePagerAdapter
 import com.toanns.kotlinexample.R
-import kotlinx.android.synthetic.main.activity_shop.*
+import kotlinx.android.synthetic.main.activity_shop.viewPager
 
 /**
  * Copyright © 2016 AsianTech inc.

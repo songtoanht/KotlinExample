@@ -1,15 +1,15 @@
 package com.toanns.kotlinexample.ui.home
 
 import android.os.Bundle
-import android.support.v4.app.Fragment
-import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.toanns.kotlinexample.R
 import com.toanns.kotlinexample.model.RedditNewsItem
-import java.util.*
+import java.util.ArrayList
 
 /**
  * @author ToanNS
@@ -38,8 +38,8 @@ class HomeFragment : Fragment() {
 
     private fun getDummyData() {
         for (i in 1..10) {
-            val reddit = RedditNewsItem("0" + i, "e" + i)
-            mStudents.add(reddit)
+            val redit = RedditNewsItem("0$i", "e$i")
+            mStudents.add(redit)
         }
 
     }

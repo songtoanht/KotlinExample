@@ -1,19 +1,19 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
 
 repositories {
     mavenCentral()
 }
 
 android {
-    compileSdkVersion 25
-    buildToolsVersion "25.0.1"
+    compileSdkVersion 28
 
     defaultConfig {
         applicationId "com.toanns.kotlinexample"
         minSdkVersion 15
-        targetSdkVersion 25
+        targetSdkVersion 28
         versionCode 1
         versionName "1.0"
     }
@@ -37,6 +37,8 @@ android {
         }
     }
 
+    flavorDimensions "toanns"
+
     productFlavors {
         student {
 //            manifestPlaceholders = [app_name1:"student"]
@@ -57,17 +59,17 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.release
-            applicationVariants.all {
-                variant -> appendVersionNameVersionCode(variant)
-            }
+//            applicationVariants.all {
+//                variant -> appendVersionNameVersionCode(variant)
+//            }
         }
 
         debug {
             applicationIdSuffix '.debug'
             signingConfig signingConfigs.debug
-            applicationVariants.all {
-                variant -> appendVersionNameVersionCode(variant)
-            }
+//            applicationVariants.all {
+//                variant -> appendVersionNameVersionCode(variant)
+//            }
         }
     }
 
@@ -75,24 +77,24 @@ android {
         variant ->
             switch (variant.getName()) {
                 case "studentDebug":
-                    def APP_NAME = "[D]Student";
-                    variant.resValue("string", "app_name", "${APP_NAME}");
-                    variant.buildConfigField("int", "KEY_FB", '123');
-                    break;
+                    def APP_NAME = "[D]Student"
+                    variant.resValue("string", "app_name", "${APP_NAME}")
+                    variant.buildConfigField("int", "KEY_FB", '123')
+                    break
                 case "teacherDebug":
-                    def APP_NAME = "[D]Techer";
-                    variant.resValue("string", "app_name", "${APP_NAME}");
-                    variant.buildConfigField("int", "KEY_FB", '456');
-                    break;
+                    def APP_NAME = "[D]Techer"
+                    variant.resValue("string", "app_name", "${APP_NAME}")
+                    variant.buildConfigField("int", "KEY_FB", '456')
+                    break
                 case "studentRelease":
-                    def APP_NAME = "Student";
-                    variant.resValue("string", "app_name", "${APP_NAME}");
-                    variant.buildConfigField("int", "KEY_FB", '123');
+                    def APP_NAME = "Student"
+                    variant.resValue("string", "app_name", "${APP_NAME}")
+                    variant.buildConfigField("int", "KEY_FB", '123')
                     break;
                 case "teacherRelease":
-                    def APP_NAME = "Teacher";
-                    variant.resValue("string", "app_name", "${APP_NAME}");
-                    variant.buildConfigField("int", "KEY_FB", '456');
+                    def APP_NAME = "Teacher"
+                    variant.resValue("string", "app_name", "${APP_NAME}")
+                    variant.buildConfigField("int", "KEY_FB", '456')
                     break;
             }
     }
@@ -112,28 +114,32 @@ android {
         lintConfig file('lint.xml')
         xmlOutput file("${buildDir}/outputs/lint-results.xml")
     }
-}
-
-@SuppressWarnings("GroovyAssignabilityCheck")
-def appendVersionNameVersionCode(variant) {
-    variant.outputs.each { output ->
-        def applicationId = variant.mergedFlavor.applicationId + (variant.buildType.applicationIdSuffix == null ? "" : variant.buildType.applicationIdSuffix)
-        if (variant.buildType.name == android.buildTypes.debug.name || variant.buildType.name == android.buildTypes.release.name) {
-            if (output.zipAlign) {
-                def file = output.outputFile
-                output.outputFile = new File(file.parentFile, "${variant.buildType.name}_${applicationId}_v${variant.versionName}-${variant.versionCode}.apk")
-            }
-        }
+    compileOptions {
+        sourceCompatibility = 1.8
+        targetCompatibility = 1.8
     }
 }
 
-apply from: "https://raw.githubusercontent.com/monstar-lab/gradle-android-ci-check/for-kotlin-settings/ci_kotlin.gradle"
+//@SuppressWarnings("GroovyAssignabilityCheck")
+//def appendVersionNameVersionCode(variant) {
+//    variant.outputs.each { output ->
+//        def applicationId = variant.mergedFlavor.applicationId + (variant.buildType.applicationIdSuffix == null ? "" : variant.buildType.applicationIdSuffix)
+//        if (variant.buildType.name == android.buildTypes.debug.name || variant.buildType.name == android.buildTypes.release.name) {
+//            if (output.zipAlign) {
+//                def file = output.outputFile
+//                output.outputFile = new File(file.parentFile, "${variant.buildType.name}_${applicationId}_v${variant.versionName}-${variant.versionCode}.apk")
+//            }
+//        }
+//    }
+//}
+//
+//apply from: "https://raw.githubusercontent.com/monstar-lab/gradle-android-ci-check/for-kotlin-settings/ci_kotlin.gradle"
 
 dependencies {
-    compile fileTree(include: ['*.jar'], dir: 'libs')
-    testCompile 'junit:junit:4.12'
-    compile 'com.android.support:appcompat-v7:25.1.0'
-    compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-    compile 'com.android.support:recyclerview-v7:25.1.0'
-    compile 'com.squareup.retrofit2:retrofit:2.0.0'
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    testImplementation 'junit:junit:4.12'
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    implementation androidx.appcompat
+    implementation androidx.recyclerview
+    implementation retrofit.retrofit
 }

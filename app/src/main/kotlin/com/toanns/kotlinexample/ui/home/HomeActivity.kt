@@ -1,8 +1,8 @@
 package com.toanns.kotlinexample.ui.home
 
 import android.os.Bundle
-import android.support.v4.app.FragmentManager
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.FragmentManager
 import com.toanns.kotlinexample.R
 
 /**
@@ -22,7 +22,7 @@ class HomeActivity : AppCompatActivity() {
         val ft = supportFragmentManager.beginTransaction()
 
         if (cleanStack) {
-            cleanBackStack();
+            cleanBackStack()
         }
         ft.replace(R.id.containerFrame, f)
         ft.addToBackStack(null)
@@ -30,9 +30,9 @@ class HomeActivity : AppCompatActivity() {
     }
 
     private fun cleanBackStack() {
-        val manager = supportFragmentManager;
+        val manager = supportFragmentManager
         if (manager.backStackEntryCount > 0) {
-            val first = manager.getBackStackEntryAt(0);
+            val first = manager.getBackStackEntryAt(0)
             manager.popBackStack(first.id, FragmentManager.POP_BACK_STACK_INCLUSIVE)
         }
     }
@@ -41,11 +41,11 @@ class HomeActivity : AppCompatActivity() {
      * Finish activity when reaching the last fragment.
      */
     override fun onBackPressed() {
-        val fragmentManager = supportFragmentManager;
+        val fragmentManager = supportFragmentManager
         if (fragmentManager.backStackEntryCount > 1) {
-            fragmentManager.popBackStack();
+            fragmentManager.popBackStack()
         } else {
-            finish();
+            finish()
         }
     }
 }

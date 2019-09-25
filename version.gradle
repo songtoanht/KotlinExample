@@ -1,0 +1,291 @@
+ext {
+    //app
+    compileSDKVersion = 28
+    minSDKVersion = 21
+    targetSDKVersion = 28
+
+    // support library for AndroidX
+    appcompatVersion = "1.0.2"
+    supportXVersion = "1.0.0"
+    biometricVersion = "1.0.0-alpha04"
+    archXVersion = "2.0.0"
+    constraintLayoutVersion = "2.0.0-alpha2"
+    workerVersion = "1.0.0-alpha11"
+    browserVersion = "1.0.0-rc01"
+    navigationVersion = "2.0.0"
+    paletteVersion = "1.0.0"
+
+    androidx = [:]
+    androidx.appcompat = "androidx.appcompat:appcompat:$appcompatVersion"
+    androidx.recyclerview = "androidx.recyclerview:recyclerview:$supportXVersion"
+    androidx.material = "com.google.android.material:material:$supportXVersion"
+    androidx.supportv4 = "androidx.legacy:legacy-support-v4:$supportXVersion"
+    androidx.vectordrawable = "androidx.vectordrawable:vectordrawable:$supportXVersion"
+    androidx.biometric = "androidx.biometric:biometric:$biometricVersion"
+    androidx.constraintlayout = "androidx.constraintlayout:constraintlayout:$constraintLayoutVersion"
+    androidx.work_ktx = "android.arch.work:work-runtime-ktx:$workerVersion"
+    androidx.browser = "androidx.browser:browser:${browserVersion}"
+    androidx.navigation_fragment = "androidx.navigation:navigation-fragment-ktx:$navigationVersion"
+    androidx.navigation_ui = "androidx.navigation:navigation-ui-ktx:$navigationVersion"
+    androidx.palette = "androidx.palette:palette-ktx:${paletteVersion}"
+    androidx.core = "androidx.core:core-ktx:1.0.2"
+
+    lifecycle = [:]
+    lifecycle.extensions = "androidx.lifecycle:lifecycle-extensions:$archXVersion"
+    lifecycle.compiler = "androidx.lifecycle:lifecycle-compiler:$archXVersion"
+    lifecycle.reactive_streams = "androidx.lifecycle:lifecycle-reactivestreams:$archXVersion"
+    androidx.lifecycle = lifecycle
+
+    // dependencies injection
+    dagger2Version = "2.16"
+    dagger = [:]
+    dagger.dagger = "com.google.dagger:dagger-android:$dagger2Version"
+    dagger.support = "com.google.dagger:dagger-android-support:$dagger2Version"
+    dagger.compiler = "com.google.dagger:dagger-compiler:$dagger2Version"
+    dagger.processor = "com.google.dagger:dagger-android-processor:$dagger2Version"
+
+    // network
+    retrofitVersion = "2.6.2"
+    okHttpVersion = "3.10.0"
+    retrofit = [:]
+    retrofit.retrofit = "com.squareup.retrofit2:retrofit:$retrofitVersion"
+    retrofit.converter_gson = "com.squareup.retrofit2:converter-gson:$retrofitVersion"
+    retrofit.adapter_rxjava = "com.squareup.retrofit2:adapter-rxjava2:$retrofitVersion"
+    okhttp3_logging_interceptor = "com.squareup.okhttp3:logging-interceptor:$okHttpVersion"
+
+    stethoVersion = "1.5.0" // stetho
+    facebook = [:]
+    facebook.stetho = "com.facebook.stetho:stetho:$stethoVersion"
+    facebook.stetho_okhttp3 = "com.facebook.stetho:stetho-okhttp3:$stethoVersion"
+    facebook.stetho_realm = "com.uphyca:stetho_realm:2.2.2"
+    facebook.fresco = "com.facebook.fresco:fresco:1.12.0"
+
+    // deeplink
+    deepLinkVersion = "4.1.0"
+    deeplink = [:]
+    deeplink.deeplink = "com.airbnb:deeplinkdispatch:$deepLinkVersion"
+    deeplink.processor = "com.airbnb:deeplinkdispatch-processor:$deepLinkVersion"
+
+    // google play services
+    playServiceVersion = "16.0.0" // Google Play service
+    googleTagManagerVersion = "16.0.5" // Google Tag Manager
+    google = [:]
+    play_service = [:]
+    play_service.gcm = "com.google.android.gms:play-services-gcm:$playServiceVersion"
+    play_service.location = "com.google.android.gms:play-services-location:$playServiceVersion"
+    play_service.gtm = "com.google.android.gms:play-services-tagmanager:$googleTagManagerVersion"
+
+    // firebase
+    firebaseCoreVersion = "16.0.5"
+    firebaseMessagingVersion = "17.3.4"
+    firebaseConfigVersion = "16.1.0"
+    firebaseDynamicLinksVersion = "16.1.5"
+    firebasePerf = "16.2.5"
+    firebase = [:]
+    firebase.core = "com.google.firebase:firebase-core:$firebaseCoreVersion"
+    firebase.messaging = "com.google.firebase:firebase-messaging:$firebaseMessagingVersion"
+    firebase.config = "com.google.firebase:firebase-config:$firebaseConfigVersion"
+    firebase.dynamic_links = "com.google.firebase:firebase-dynamic-links:$firebaseDynamicLinksVersion"
+    firebase.performance = "com.google.firebase:firebase-perf:$firebasePerf"
+
+
+    // rx
+    rxJava2Version = "2.2.3"
+    rxJava2AndroidVersion = "2.1.0"
+    rxJava2KotlinVersion = "2.1.0"
+
+    reactivex = [:]
+    reactivex.rxjava = "io.reactivex.rxjava2:rxjava:$rxJava2Version"
+    reactivex.rxandroid = "io.reactivex.rxjava2:rxandroid:$rxJava2AndroidVersion"
+    reactivex.rxkotlin = "io.reactivex.rxjava2:rxkotlin:$rxJava2KotlinVersion"
+
+    jakewharton = [:]
+    jakewharton.timber = "com.jakewharton.timber:timber:4.7.1"
+    jakewharton.rxbinding2 = "com.jakewharton.rxbinding2:rxbinding-kotlin:2.1.1"
+    jakewharton.rxbinding3 = "com.jakewharton.rxbinding3:rxbinding:3.0.0-alpha1"
+    jakewharton.rxrelay = "com.jakewharton.rxrelay2:rxrelay:2.1.0"
+    jakewharton.threetenabp = "com.jakewharton.threetenabp:threetenabp:1.1.1"
+
+    leakCanaryVersion = "1.6.2"
+    leak_canary = "com.squareup.leakcanary:leakcanary-android:$leakCanaryVersion"
+    leak_canary_no_op = "com.squareup.leakcanary:leakcanary-android-no-op:$leakCanaryVersion"
+
+    fabric = [:]
+    fabric.crashlytics = "com.crashlytics.sdk.android:crashlytics:2.9.5@aar" // crash report
+    insider = "com.useinsider:insider:8.3.1" // push notification
+    realm_ktx = "com.github.vicpinm:krealmextensions:2.2.0" // realm ext
+    event_bus = "org.greenrobot:eventbus:3.1.1" // event bus
+
+    // tracking
+    google.service = "com.google.gms:google-services:4.1.0"
+    install_referrer = "com.android.installreferrer:installreferrer:1.0"
+    appsflyers = "com.appsflyer:af-android-sdk:4.8.18@aar"
+    facebook.android_sdk = "com.facebook.android:facebook-android-sdk:4.39.0"
+
+    // widgets
+    widget = [:]
+    widget.material_dialog = "com.afollestad.material-dialogs:core:2.0.0-beta4"
+    widget.skeleton = "com.ethanhua:skeleton:1.1.2"
+    widget.shimmer = "io.supercharge:shimmerlayout:2.1.0"
+    widget.pager_indicator = "com.romandanylyk:pageindicatorview:1.0.3"
+    widget.pin_edittext_field = "com.poovam:pin-edittext-field:1.0.10"
+    widget.ticket = "com.vipulasri:ticketview:1.0.7"
+
+    // utils
+    utils = [:]
+    utils.zbar = "me.dm7.barcodescanner:zbar:1.9.8"
+    utils.easy_permission = "com.github.florent37:runtime-permission-kotlin:1.1.0"
+    utils.barcode = "com.bottlerocketstudios:barcode:1.0.3@aar"
+
+    //animation
+    airbnb = [:]
+    airbnb.lottie = "com.airbnb.android:lottie:3.0.0"
+
+    // rounded corner imageview
+    roundedImageView = "com.makeramen:roundedimageview:2.3.0"
+
+    // test
+    unitTest = [:]
+    unitTest.junit = "junit:junit:4.12"
+    unitTest.mockito = "org.mockito:mockito-core:2.23.0"
+    unitTest.mockwebserver = "com.squareup.okhttp3:mockwebserver:3.14.1"
+    mockitoKotlin = "com.nhaarman.mockitokotlin2:mockito-kotlin:2.1.0"
+    unitTest.mockitoinline = "org.mockito:mockito-inline:2.13.0"
+    unitTest.mockk = "io.mockk:mockk:1.9"
+
+    androidTest = [:]
+    androidTest.runner = "androidx.test:runner:1.1.0"
+    androidTest.espresso_core = "androidx.test.espresso:espresso-core:3.1.0"
+    androidTest.arch_core = "android.arch.core:core-testing:2.0.0"
+    androidTest.ext_runner = "androidx.test.ext:junit:1.1.0"
+
+    vinid = [:]
+    core_default_version = '0.3.9'
+    core_default_debug_version = '0.3.9-debug'
+    core_bitrise_version = System.getenv("BITRISE_CORE_VERSION")
+    core_version = core_bitrise_version == null ? core_default_version : core_bitrise_version
+    core_debug_version = core_bitrise_version == null ? core_default_debug_version : core_bitrise_version
+    vinid.core = "com.vingroup.vinid:core:$core_version"
+    vinid.coreDebug = "com.vingroup.vinid:core:$core_debug_version"
+
+    vinid.test = "com.vingroup.vinid:core-testing:0.0.1-alpha1"
+    vinid.notification = "com.vingroup.vinid:notification:1.0.8"
+    scanner_core_default_version = "1.1.1"
+    scanner_core_bitrise_version = System.getenv("BITRISE_SCANNER_CORE_VERSION")
+    scanner_core_version = scanner_core_bitrise_version == null ? scanner_core_default_version : scanner_core_bitrise_version
+    vinid.scanner_core = "com.vingroup.vinid.scanner:core:$scanner_core_version"
+
+    gamezone_default_version = "1.2.3"
+    gamezone_bitrise_version = System.getenv("BITRISE_GAMEZONE_VERSION")
+    gamezone_version = gamezone_bitrise_version == null ? gamezone_default_version : gamezone_bitrise_version
+    vinid.gamezone = "com.vingroup.vinid:gamezone:$gamezone_version"
+
+    scanner_common_default_version = "1.1.1"
+    scanner_common_bitrise_version = System.getenv("BITRISE_SCANNER_COMMON_VERSION")
+    scanner_common_version = scanner_common_bitrise_version == null ? scanner_common_default_version : scanner_common_bitrise_version
+    vinid.scanner_common = "com.vingroup.vinid.scanner:common:$scanner_common_version"
+
+    vinhomes_default_version = "1.4.0"
+    vinhomes_bitrise_version = System.getenv("BITRISE_VINHOMES_VERSION")
+    vinhomes_version = vinhomes_bitrise_version == null ? vinhomes_default_version : vinhomes_bitrise_version
+    vinid.vinhomes = "com.vingroup.vinid:vinhomes:$vinhomes_version"
+
+    auth_default_version = "0.3.8"
+    auth_bitrise_version = System.getenv("BITRISE_AUTH_VERSION")
+    auth_version = auth_bitrise_version == null ? auth_default_version : auth_bitrise_version
+    vinid.auth = "com.vingroup.vinid:auth:$auth_version"
+
+    loyalty_default_version = "1.0.10"
+    loyalty_bitrise_version = System.getenv("BITRISE_LOYALTY_VERSION")
+    loyalty_version = loyalty_bitrise_version == null ? loyalty_default_version : loyalty_bitrise_version
+    vinid.loyalty = "com.vingroup.vinid:loyalty:$loyalty_version"
+
+    wallet_default_version = "2.0.5"
+    wallet_bitrise_version = System.getenv("BITRISE_WALLET_VERSION")
+    wallet_version = wallet_bitrise_version == null ? wallet_default_version : wallet_bitrise_version
+    vinid.wallet = "com.vingroup.vinid:wallet:$wallet_default_version"
+
+    money_transfer_default_version = "2.1.3"
+    money_transfer_bitrise_version = System.getenv("BITRISE_MONEY_TRANSFER_VERSION")
+    money_transfer_version = money_transfer_bitrise_version == null ? money_transfer_default_version : money_transfer_bitrise_version
+    vinid.moneytransfer = "com.vingroup.vinid.pay:money-transfer:$money_transfer_version"
+
+    evoucher_default_version = "1.7.0"
+    evoucher_bitrise_version = System.getenv("BITRISE_EVOUCHER_VERSION")
+    evoucher_version = evoucher_bitrise_version == null ? evoucher_default_version : evoucher_bitrise_version
+    vinid.evoucher = "com.vingroup.vinid:evoucher:$evoucher_version"
+
+    vincart_default_version = "4.1.2"
+    vincart_bitrise_version = System.getenv("BITRISE_VINCART_VERSION")
+    vincart_version = vincart_bitrise_version == null ? vincart_default_version : vincart_bitrise_version
+    vinid.vincart = "com.vingroup.vinid:vincart:$vincart_version"
+
+    billpay_default_version = "1.4.4"
+    billpay_bitrise_version = System.getenv("BITRISE_BILLPAY_VERSION")
+    billpay_version = billpay_bitrise_version == null ? billpay_default_version : billpay_bitrise_version
+    vinid.billpay = "com.vingroup.vinid:billpay:$billpay_version"
+
+    common_default_version = "0.2.6"
+    common_bitrise_version = System.getenv("BITRISE_COMMON_VERSION")
+    common_version = common_bitrise_version == null ? common_default_version : common_bitrise_version
+    vinid.common = "com.vingroup.vinid:common:$common_version"
+
+    ticket_default_version = "1.1.1"
+    ticket_bitrise_version = System.getenv("BITRISE_TICKET_VERSION")
+    ticket_version = ticket_bitrise_version == null ? ticket_default_version : ticket_bitrise_version
+    vinid.ticket = "com.vingroup.vinid:ticket:$ticket_version"
+
+    chat_default_version = "1.0.4"
+    chat_bitrise_version = System.getenv("BITRISE_CHAT_VERSION")
+    chat_version = chat_bitrise_version == null ? chat_default_version : chat_bitrise_version
+    vinid.chat = "com.vingroup.vinid:chat:$chat_version"
+
+    qr_hook_default_version = "1.0.8"
+    qr_hook_bitrise_version = System.getenv("BITRISE_QRHOOK_VERSION")
+    qr_hook_version = qr_hook_bitrise_version == null ? qr_hook_default_version : qr_hook_bitrise_version
+    vinid.qrhook = "com.vingroup.vinid:qrhook:$qr_hook_version"
+
+    toolTip = [:]
+    toolTip.tooltip = "com.github.vihtarb:tooltip:0.2.0"
+
+    itemtouchhelper = [:]
+    itemtouchhelper.extension = "com.loopeer.library:itemtouchhelperextension:1.0.6"
+
+    appflyer = [:]
+    appflyer.sdk = "com.appsflyer:af-android-sdk:4.9.0"
+    appflyer.installreferrer = "com.android.installreferrer:installreferrer:1.0"
+
+    hyperionVersion = "0.9.28"
+    hyperion = [:]
+    hyperion.core = "com.vingroup.hyperion:hyperion-core:$hyperionVersion"
+    hyperion.attr = "com.vingroup.hyperion:hyperion-attr:$hyperionVersion"
+    hyperion.crash = "com.vingroup.hyperion:hyperion-crash:$hyperionVersion"
+    hyperion.disk = "com.vingroup.hyperion:hyperion-disk:$hyperionVersion"
+    hyperion.counter = "com.vingroup.hyperion:hyperion-geiger-counter:$hyperionVersion"
+    hyperion.measurement = "com.vingroup.hyperion:hyperion-measurement:$hyperionVersion"
+    hyperion.phoenix = "com.vingroup.hyperion:hyperion-phoenix:$hyperionVersion"
+    hyperion.recorder = "com.vingroup.hyperion:hyperion-recorder:$hyperionVersion"
+    hyperion.preferences = "com.vingroup.hyperion:hyperion-shared-preferences:$hyperionVersion"
+    hyperion.timber = "com.vingroup.hyperion:hyperion-timber:$hyperionVersion"
+
+    swipe_pull_refresh = [:]
+    swipe_pull_refresh.layout = 'com.vingroup.vinid:smartrefresh:0.0.7'
+    swipe_pull_refresh.header = 'com.scwang.smartrefresh:SmartRefreshHeader:1.1.0-andx-14'
+    swipe_pull_refresh.legacy = 'androidx.legacy:legacy-support-v4:1.0.0'
+
+    glide = [:]
+    glide.core = "com.github.bumptech.glide:glide:4.9.0"
+    glide.compiler = "com.github.bumptech.glide:compiler:4.9.0"
+
+    algolia = [:]
+    algolia.searchandroid = "com.algolia:algoliasearch-android:3.27.0"
+    algolia.instantsearch = "com.algolia:instantsearch-androidx-core:1.15.2"
+
+    // SendBird
+    sendbird = [:]
+    sendbird.sdk = "com.sendbird.sdk:sendbird-android-sdk:3.0.100"
+    sendbird.sync_manager = "com.sendbird.sdk:sendbird-syncmanager:1.1.3"
+
+    //photoview for glide
+    photoview = 'com.github.chrisbanes:PhotoView:2.0.0'
+}
